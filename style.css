@@ -1,10 +1,9 @@
-/* Full-screen Hero Section */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #00c853, #b2ff59); /* Lime green gradient */
+    background: linear-gradient(to right, #00c853, #b2ff59);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,66 +18,69 @@ body, html {
 }
 
 .search-container {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255,255,255,0.95);
     padding: 50px 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     text-align: center;
     width: 90%;
-    max-width: 500px;
+    max-width: 550px;
 }
 
 .search-container h1 {
-    font-size: 2.5em;
+    font-size: 3em;
     margin-bottom: 10px;
     color: #333;
 }
 
 .search-container p {
-    font-size: 1.1em;
+    font-size: 1.2em;
     margin-bottom: 30px;
-    color: #666;
+    color: #555;
 }
 
 .input-group {
     display: flex;
     width: 100%;
-    gap: 10px;
+    gap: 12px;
 }
 
 input#searchBox {
     flex: 1;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 18px;
+    border-radius: 12px;
     border: 1px solid #ccc;
-    font-size: 1em;
+    font-size: 1.1em;
 }
 
 button#searchBtn {
-    padding: 15px 25px;
+    padding: 18px 30px;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     background-color: #388e3c;
     color: white;
-    font-size: 1em;
+    font-size: 1.1em;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button#searchBtn:hover {
-    background-color: #1b5e20;
 }
 
 #result {
-    margin-top: 30px;
+    margin-top: 35px;
     text-align: left;
-    font-size: 1em;
+    font-size: 1.05em;
     color: #333;
 }
 
-#result p {
-    margin: 8px 0;
-    padding: 8px;
-    background: #f1f1f1;
-    border-radius: 5px;
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.card.error {
+    background: #ffebee;
+    color: #c62828;
+    font-weight: bold;
+    text-align: center;
 }
