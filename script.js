@@ -1,4 +1,4 @@
-const csvURL = "https://raw.githubusercontent.com/Hridoy398398/SiteFinder/refs/heads/main/Site%20Finder%20-%20Cox's%20Bazar.csv"; // GitHub repo-তে রাখা CSV file
+const csvURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSdfSZVmZJdbBsQB1QW2nBvpUXMnu2m04843HQkMX4tjgIF0ogDxH0SuxPoqUUANX-E6SO902CRkXqo/pub?gid=0&single=true&output=csv"; // GitHub repo-তে রাখা CSV file
 
 document.getElementById("searchBtn").addEventListener("click", function() {
     const siteCode = document.getElementById("searchBox").value.trim();
@@ -33,4 +33,5 @@ document.getElementById("searchBtn").addEventListener("click", function() {
           document.getElementById("result").innerHTML = `<div class='card error'>Failed to load CSV</div>`;
       });
 });
+
 
