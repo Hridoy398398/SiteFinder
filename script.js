@@ -1,26 +1,33 @@
-const jsonURL = "https://script.google.com/macros/s/AKfycby7ZiIkC6HtszPSh2H8z_JDJ6OYJkFBl6bMBRrNC6CpYVuZ1rkKCfdRIcfYjfZFaP6b/exec";
+const DATA_URL = "https://raw.githubusercontent.com/Hridoy398398/SiteFinder/refs/heads/root/data.json"; // GitHub repo তে রাখা JSON ফাইল
 
-document.getElementById("searchBtn").addEventListener("click", function() {
-    const siteId = document.getElementById("searchBox").value.trim();
-    if (!siteId) return alert("Please enter a Site ID");
-
-    fetch(`${jsonURL}?site_id=${encodeURIComponent(siteId)}`)
-        .then(response => response.json())
+document.getElementById("searchBtn").addEventListener("click", () => {
+    let siteId = document.getElementById("searchBox").value.trim();
+    fetch(DATA_URL)
+        .then(res => res.json())
         .then(data => {
-            const resultDiv = document.getElementById("result");
-            if (data.ok) {
+            let site = data.find(item => item.site_id === siteId);
+            let resultDiv = document.getElementById("result");
+            if (site) {
                 resultDiv.innerHTML = `
-                    <p><strong>Site ID:</strong> ${data.site_id}</p>
-                    <p><strong>Name:</strong> ${data.name}</p>
-                    <p><strong>Location:</strong> ${data.location}</p>
-                    <p><strong>Status:</strong> ${data.status}</p>
+                    <h3>Site Information</h3>
+                    <p><b>Site ID:</b> ${site.site_id}</p>
+                    <p><b>Key Info:</b> ${site.key_info}</p>
+                    <p><b>Location:</b> ${site.location}</p>
+                    <p><b>Latitude:</b> ${site.latitude}</p>
+                    <p><b>Longitude:</b> ${site.longitude}</p>
+                    <p><b>Share ID:</b> ${site.share_id}</p>
+                    <p><b>Type:</b> ${site.type}</p>
+                    <p><b>Priority:</b> ${site.priority}</p>
+                    <p><b>Thana:</b> ${site.thana}</p>
+                    <p><b>MSD Office:</b> ${site.msd_office}</p>
                 `;
             } else {
-                resultDiv.innerHTML = `<p>${data.error}</p>`;
+                resultDiv.innerHTML = `<p style="color:red;">No site found with ID ${siteId}</p>`;
             }
         })
         .catch(err => {
+            document.getElementById("result").innerHTML = 
+                `<p style="color:red;">Error loading data.json</p>`;
             console.error(err);
-            document.getElementById("result").innerHTML = "<p>Failed to fetch data. Check your JSON link.</p>";
         });
 });
